@@ -1,6 +1,7 @@
 {
     "env": {
-        "LLVM_PROJECT_ROOT": "${env:HOME}/compiler-projects/llvm-18-src-build",
+        "LLVM_PROJECT_BUILD_ROOT": "${workspaceFolder}/llvm-19-src-build",
+        "LLVM_PROJECT_INSTALLATION_ROOT": "${workspaceFolder}/llvm-19-src-build-installation",
         "myIncludePath": [
             "/usr/include",
             "/usr/include/x86_64-linux-gnu/c++/9"
@@ -13,12 +14,12 @@
     "configurations": [
         {
             "name": "Linux",
-            "compilerPath": "${env:LLVM_PROJECT_ROOT}/installation/bin/clang",
+            "compilerPath": "${env:LLVM_PROJECT_BUILD_ROOT}/bin/clang",
             "compilerArgs": [""],
             "intelliSenseMode": "linux-gcc-x86",
             "includePath": [
                 "${myIncludePath}",
-                "${env:LLVM_PROJECT_ROOT}/installation/include",
+                "${env:LLVM_PROJECT_INSTALLATION_ROOT}/include",
                 "${workspaceFolder}/src/include"
             ],
             "defines": ["${myDefines}"],
@@ -35,6 +36,7 @@
             "browse": {
                 "path": [
                     "${myIncludePath}",
+                    "${env:LLVM_PROJECT_INSTALLATION_ROOT}/include",
                     "${workspaceFolder}/src/include/"
                 ],
                 "limitSymbolsToIncludedHeaders": true,

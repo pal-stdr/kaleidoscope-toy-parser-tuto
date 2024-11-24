@@ -1,0 +1,4 @@
+[submodule "llvm-19-src"]
+	path = llvm-19-src
+	url = https://github.com/llvm/llvm-project.git
+	branch = release/19.x

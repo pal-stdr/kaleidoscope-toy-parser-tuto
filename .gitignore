@@ -1,5 +1,7 @@
 # For VSCode
 .vscode/browse.vc.*
 
+
+# Ignore llvm build folders
 llvm-19-src-build/
 llvm-19-src-build-installation/
