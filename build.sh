@@ -52,11 +52,11 @@ BUILD_DIR="${PROJECT_ROOT_DIR}/build"
 # CC="-std=gnu++1z"
 CC="-g -std=c++2a"
 
-# declare Include paths
-CFLAGS="-I ${APP_INCLUDE_DIR} -I ${APP_ROOT_DIR}"
+# Declare Include paths
+CFLAGS="-I ${LLVM_PROJECT_INCLUDE_DIR} -I ${APP_INCLUDE_DIR} -I ${APP_ROOT_DIR}"
 
-# Enable all kind of warnings
-CFLAGS+=" -Wall -Wextra -pedantic"
+# Enable warnings
+CFLAGS+=" -Wall -pedantic"
 
 
 # LLVMFLAGS="$(llvm-config --cxxflags --ldflags --system-libs --libs all)"
@@ -90,8 +90,8 @@ cd "${BUILD_DIR}"
 eval ${COMPILE_CMD}
 
 
-# Run
-"${BUILD_DIR}/${APP_BIN_NAME}"
+# # Run
+# "${BUILD_DIR}/${APP_BIN_NAME}"
 
 
 # # Remove
