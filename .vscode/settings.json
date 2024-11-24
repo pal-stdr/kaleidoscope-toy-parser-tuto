@@ -5,18 +5,23 @@
 
     "cmake.configureOnOpen": false,
     
+    "git.ignoredRepositories": [
+        "${workspaceFolder}/llvm-19-src"
+    ],
+
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
-        "**/build/**": true,
+        "**/llvm-19-src/**": true,
         "**/llvm-19-src-build/**": true,
         "**/llvm-19-src-build-installation/**": true,
+        "**/build/**": true
     },
     "search.exclude": {
         "**/.git": true,
         "**/build": true,
-        "**/llvm-19-src-build": true,
-        "**/llvm-19-src-build-installation": true,
+        "**/llvm-19-src": true,
+        "**/llvm-19-src-build": true
     },
 
     "files.associations": {
