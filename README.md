@@ -2,105 +2,85 @@
 
 - Based on [My First Language Frontend with LLVM Tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html)
 
-
-# Pre-requisite
-
 - **(Only once you have to do it!!! 😇)** Please read the **Pre-requisites** section of [docs/KALEIDOSCOPE/0.SETTING-UP-BOILERPLATE/1.ADD-and-BUILD-CLANG-LLVM-COMPILER.md](docs/KALEIDOSCOPE/0.SETTING-UP-BOILERPLATE/1.ADD-and-BUILD-CLANG-LLVM-COMPILER.md).
-
-- for llvm, `release/19.x` branch has been used.
 
 - Use `VScode` editor for better developer UX if you are using linux.
 
 
 # TUTORIAL INDEX (git branch wise)
 
+### Chapter 0: SETTING-UP BOILERPLATE
 - `ch-0-0-init-basic-boilerplate`: Setup of the basic boilerplate with `g++` compiler.
-- `ch-0-1-add-llvm-clang-compiler`: Setup the `clang++` compiler to compile this project.
+- `ch-0-1-add-llvm-clang-compiler`: Setup the `clang++` compiler to build this project.
+
+### Chapter 1: SETTING-UP LEXER
+- `ch-1-0-parse-and-print-toy-input-code`: Parse [toy example code](test-code-samples/Examples/kaleidoscope) as input and print in terminal.
 - More coming....
 
 
-# Chapter 0-1 (`ch-0-1-add-llvm-clang-compiler` branch)
 
+# Chapter 1-0 (`ch-1-0-parse-and-print-toy-input-code` branch)
 
-## Objectives
+## Objective
 
-- **Our objective is to make a parser using `llvm` assets. So it's logical to compile this project using clang bin (i.e. `clang++`), headers (`*.{h, hpp}`), libs `*.so`, etc.**
+- **Parse input [toy code samples](test-code-samples/Examples/kaleidoscope) as input and print in terminal. (i.e. `kaleidoscope-parser path/to/sample.toy`)**
 
-- **Building `clang++` here in the project-root ensures the availability of all the required clang headers (`*.{h, hpp}`), libs `*.so`, etc. We donot need any outside dependency.**
-
-- **Setup `clang++` compiler to compile this project. Use [`scripts/build-llvm-19.sh`](scripts/build-llvm-19.sh) to build `clang++`.**
-
-- **(IMPORTANT!!! Only once you have to do it)** Read the **Pre-requisites** section of [docs/KALEIDOSCOPE/0.SETTING-UP-BOILERPLATE/1.ADD-and-BUILD-CLANG-LLVM-COMPILER.md](docs/KALEIDOSCOPE/0.SETTING-UP-BOILERPLATE/1.ADD-and-BUILD-CLANG-LLVM-COMPILER.md). There you will find the `llvm-19-src` build process. For summary, following is how to build the `clang` (i.e. `llvm-19` from src)...
-
-```sh
-# Sync first
-git submodule sync
-
-# Load llvm-project src
-git submodule update --init
-
-# build
-./scripts/build-llvm-19.sh
-
-# You will see "llvm-19-src-build", "llvm-19-src-build-installation" created in the project root with all llvm assets.
-# They will be used in "build.sh"
-```
-
-- `llvm-19-src-build` & `llvm-19-src-build-installation` dir will be used as assets for compiler config in `build.sh`.
+- **Learn how you can use llvm assets to take code as input [docs/KALEIDOSCOPE/1.SETUP-LEXER/0.PARSE-and-PRINT-SIMPLE-TOY-INPUT-CODE.md](docs/KALEIDOSCOPE/1.SETUP-LEXER/0.PARSE-and-PRINT-SIMPLE-TOY-INPUT-CODE.md).**
 
 - `main` Entry point [`src/kaleidoscope-parser-main.cpp`](src/kaleidoscope-parser-main.cpp).
 
-- Just printing `Welcome to the kaleidoscope`.
-
-- - Reconfigure [`build.sh`](build.sh) with llvm assets to compile the `kaleidoscope-parser` using `clang++` compiler.
 
 
-# How to Compile + Run
+## How to Compile
 
 ```sh
 ./build.sh
-
-# Returns
-# Don't worry about the warnings.
-/path/to/kaleidoscope-toy-parser-tuto/src/kaleidoscope-parser-main.cpp:6:14: warning: unused parameter 'argc' [-Wunused-parameter]
-    6 | int main(int argc, char **argv) {
-      |              ^
-/path/to/kaleidoscope-toy-parser-tuto/src/kaleidoscope-parser-main.cpp:6:27: warning: unused parameter 'argv' [-Wunused-parameter]
-    6 | int main(int argc, char **argv) {
-      |                           ^
-2 warnings generated.
-Welcome to the Kaleidoscope
 ```
 
 
-# Where is the binary?
+## How to run the binary?
 
 ```sh
-build/kaleidoscope-parser
+# Parse an example toy input code and check the output in the terminal
+./build/kaleidoscope-parser test-code-samples/Examples/kaleidoscope/test-cases/1.parse-func-defn.toy
 ```
 
 
-
-## Project Scaffold
+## Project Scaffold (Upto now)
 
 ```sh
 ├── build
-│   └── kaleidoscope-parser
-├── build.sh # <== Compile & run
+│   └── kaleidoscope-parser # bin to run
+├── build.sh # <== Compile (& or run)
 ├── docs
 │   ├── GIT-DOCS
 │   │   └── 1.PLAY-with-GIT-SUBMODULES.md
 │   └── KALEIDOSCOPE
-│       └── 0.SETTING-UP-BOILERPLATE
-│           ├── 0.INIT-BOILERPLATE.md
-│           └── 1.ADD-and-BUILD-CLANG-LLVM-COMPILER.md # <== (Tuto) How to build clang compiler
-├── llvm-19-src # <== llvm-project src for branch "release/19.x"
-├── llvm-19-src-build # <== after build
-├── llvm-19-src-build-installation # <== after build & dumping all bin, header, libs here
+│       ├── 0.SETTING-UP-BOILERPLATE
+│       │   ├── 0.INIT-BOILERPLATE.md
+│       │   └── 1.ADD-and-BUILD-CLANG-LLVM-COMPILER.md
+│       └── 1.SETUP-LEXER
+│           └── 0.PARSE-and-PRINT-SIMPLE-TOY-INPUT-CODE.md # <== newly added doc
 ├── README.md
 ├── scripts
-│   └── build-llvm-19.sh # <== Shell for building clang compiler
-└── src
-    ├── include
-    └── kaleidoscope-parser-main.cpp # <== Main "*.cpp" file
+│   └── build-llvm-19.sh
+├── src
+│   ├── include
+│   └── kaleidoscope-parser-main.cpp # <== Main "*.cpp" file
+└── test-code-samples # <== newly added
+    └── Examples
+        ├── kaleidoscope
+        │   ├── basic_toy_sample.toy
+        │   ├── extern_toy_sample.toy
+        │   └── test-cases
+        │       └── 1.parse-func-defn.toy
+        └── Toy
+            ├── Ch1
+            ├── Ch2
+            ├── Ch3
+            ├── Ch4
+            ├── Ch5
+            ├── Ch6
+            └── Ch7
 ```
+
