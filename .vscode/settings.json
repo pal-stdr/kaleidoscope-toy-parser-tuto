@@ -8,11 +8,15 @@
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
-        "**/build/**": true
+        "**/build/**": true,
+        "**/llvm-19-src-build/**": true,
+        "**/llvm-19-src-build-installation/**": true,
     },
     "search.exclude": {
         "**/.git": true,
-        "**/build": true
+        "**/build": true,
+        "**/llvm-19-src-build": true,
+        "**/llvm-19-src-build-installation": true,
     },
 
     "files.associations": {
@@ -44,7 +48,7 @@
         "editor.tabSize": 4
     },
     "[markdown]": {
-        "editor.insertSpaces": false,
+        "editor.insertSpaces": true,
         "editor.detectIndentation": false,
         "editor.tabSize": 4
     },

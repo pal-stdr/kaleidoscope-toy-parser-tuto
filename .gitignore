@@ -1,2 +1,5 @@
 # For VSCode
 .vscode/browse.vc.*
+
+llvm-19-src-build/
+llvm-19-src-build-installation/
